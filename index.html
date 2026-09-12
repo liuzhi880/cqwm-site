@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传奇完美 · 完美国际155怀旧服</title>
+<style>
+/* ============ 全局配置:改服务器信息请搜索 [改这里] ============ */
+:root{
+  --gold:#e8c476;
+  --gold-bright:#ffd98a;
+  --gold-dim:#a8905a;
+  --bg:#0a0e1a;
+  --bg2:#101828;
+  --panel:rgba(20,30,52,.72);
+  --line:rgba(232,196,118,.25);
+  --text:#d8deeb;
+  --text-dim:#8d97ad;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);overflow-x:hidden;
+}
+h1,h2,h3,.serif{font-family:"KaiTi","STKaiti","Microsoft YaHei",serif}
+
+/* ---------- 顶部导航 ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 6vw;
+  background:linear-gradient(180deg,rgba(8,12,24,.95),rgba(8,12,24,.75));
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(232,196,118,.15);
+}
+nav .logo{font-size:22px;color:var(--gold-bright);letter-spacing:4px;font-weight:bold}
+nav .logo small{font-size:12px;color:var(--text-dim);letter-spacing:1px;margin-left:8px}
+nav ul{display:flex;gap:34px;list-style:none}
+nav a{color:var(--text);text-decoration:none;font-size:15px;letter-spacing:2px;transition:.2s}
+nav a:hover{color:var(--gold-bright)}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px 20px 80px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%,rgba(72,100,180,.35),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 110%,rgba(180,120,40,.18),transparent),
+    linear-gradient(180deg,#0a0e1a 0%,#0d1424 55%,#0a0e1a 100%);
+}
+.hero::before{ /* 山影 */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:36vh;pointer-events:none;
+  background:
+    radial-gradient(120% 100% at 20% 130%, rgba(30,44,80,.9), transparent 60%),
+    radial-gradient(120% 110% at 85% 140%, rgba(24,34,62,.9), transparent 60%);
+}
+.hero .cloud{position:absolute;color:rgba(232,196,118,.08);font-size:160px;user-select:none;pointer-events:none;animation:drift 40s linear infinite}
+@keyframes drift{from{transform:translateX(-15vw)}to{transform:translateX(115vw)}}
+.hero .tagline{
+  color:var(--gold-dim);letter-spacing:10px;font-size:15px;margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(52px,9vw,110px);letter-spacing:14px;font-weight:900;
+  background:linear-gradient(180deg,#fff4d6 10%,var(--gold) 55%,#9a7a3c 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(232,196,118,.25);
+  position:relative;z-index:2;
+}
+.hero .sub{
+  margin-top:20px;font-size:clamp(15px,2vw,20px);color:var(--text);letter-spacing:6px;z-index:2;
+}
+.hero .sub b{color:var(--gold-bright)}
+.divider{
+  width:min(520px,80vw);height:22px;margin:34px auto 8px;position:relative;z-index:2;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+  height:1px;
+}
+.divider::after{
+  content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  color:var(--gold);font-size:12px;background:transparent;
+}
+
+/* 倒计时 */
+.countdown{display:flex;gap:18px;margin:30px 0 8px;z-index:2}
+.cd-box{
+  min-width:96px;padding:16px 10px;border:1px solid var(--line);border-radius:10px;
+  background:var(--panel);backdrop-filter:blur(6px);
+  box-shadow:0 8px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.cd-box b{display:block;font-size:40px;color:var(--gold-bright);font-family:Consolas,monospace}
+.cd-box span{font-size:13px;color:var(--text-dim);letter-spacing:3px}
+.open-time{color:var(--text-dim);font-size:14px;letter-spacing:2px;margin-top:10px;z-index:2}
+.open-time b{color:var(--gold)}
+
+/* 按钮 */
+.btns{display:flex;gap:22px;margin-top:38px;z-index:2;flex-wrap:wrap;justify-content:center}
+.btn{
+  display:inline-block;padding:16px 46px;border-radius:6px;font-size:18px;letter-spacing:4px;
+  text-decoration:none;transition:.25s;cursor:pointer;border:1px solid transparent;
+}
+.btn-gold{
+  color:#2a1e08;font-weight:bold;
+  background:linear-gradient(180deg,#ffe3a0,#e8c476 55%,#c49a4e);
+  box-shadow:0 6px 26px rgba(232,196,118,.35);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(232,196,118,.5)}
+.btn-ghost{color:var(--gold);border-color:var(--gold-dim);background:rgba(232,196,118,.06)}
+.btn-ghost:hover{background:rgba(232,196,118,.14);border-color:var(--gold)}
+
+/* ---------- 通用 section ---------- */
+section{padding:96px 6vw;position:relative}
+.sec-title{text-align:center;margin-bottom:14px}
+.sec-title h2{
+  display:inline-block;font-size:clamp(28px,4vw,40px);letter-spacing:8px;color:var(--gold-bright);
+  position:relative;padding:0 56px;
+}
+.sec-title h2::before,.sec-title h2::after{
+  content:"❖";position:absolute;top:50%;transform:translateY(-50%);
+  color:var(--gold-dim);font-size:16px;
+}
+.sec-title h2::before{left:8px}
+.sec-title h2::after{right:8px}
+.sec-sub{text-align:center;color:var(--text-dim);letter-spacing:3px;font-size:14px;margin-bottom:56px}
+
+/* ---------- 游戏介绍 ---------- */
+#intro{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;max-width:1200px;margin:0 auto}
+.feature{
+  padding:34px 28px;border:1px solid var(--line);border-radius:12px;background:var(--panel);
+  transition:.3s;text-align:center;
+}
+.feature:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.feature .ico{font-size:42px;margin-bottom:16px}
+.feature h3{color:var(--gold);font-size:20px;letter-spacing:3px;margin-bottom:12px}
+.feature p{color:var(--text-dim);font-size:14px;line-height:1.9}
+
+/* ---------- 职业 ---------- */
+.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.cls{
+  position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  aspect-ratio:3/4.2;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:22px 18px;transition:.3s;cursor:default;
+}
+.cls:hover{transform:translateY(-6px) scale(1.02);border-color:var(--gold)}
+.cls .big{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:88px;opacity:.9;transition:.3s;
+}
+.cls:hover .big{transform:scale(1.12)}
+.cls h3{position:relative;color:#fff;font-size:22px;letter-spacing:4px;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.cls p{position:relative;color:rgba(255,255,255,.75);font-size:13px;margin-top:6px;letter-spacing:1px}
+.cls::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.65))}
+.cls h3,.cls p{z-index:2}
+.c1{background:linear-gradient(160deg,#3d2317,#8a4a26)}
+.c2{background:linear-gradient(160deg,#16294d,#2f5f9e)}
+.c3{background:linear-gradient(160deg,#0f3a33,#1e7a5f)}
+.c4{background:linear-gradient(160deg,#3a163a,#7a3a86)}
+.c5{background:linear-gradient(160deg,#403208,#8f7a1e)}
+.c6{background:linear-gradient(160deg,#2a1030,#5c2a86)}
+
+/* ---------- 开服信息 ---------- */
+#server{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.server-wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.info-card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:34px 36px}
+.info-card h3{color:var(--gold);letter-spacing:4px;font-size:20px;margin-bottom:22px;text-align:center}
+.info-card table{width:100%;border-collapse:collapse}
+.info-card td{padding:11px 6px;font-size:15px;border-bottom:1px dashed rgba(232,196,118,.14)}
+.info-card td:first-child{color:var(--text-dim);letter-spacing:2px;width:38%}
+.info-card td:last-child{color:var(--text)}
+.info-card td b{color:var(--gold-bright)}
+.info-card tr:last-child td{border-bottom:none}
+
+/* ---------- 游戏体验 ---------- */
+#play{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.play-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;max-width:1100px;margin:0 auto}
+.play-card{
+  position:relative;border:1px solid var(--line);border-radius:12px;background:var(--panel);
+  padding:40px 30px 34px;text-align:center;transition:.3s;
+}
+.play-card:hover{border-color:var(--gold);transform:translateY(-5px)}
+.play-card .step{
+  position:absolute;top:14px;left:18px;color:var(--gold-dim);font-size:15px;letter-spacing:2px;
+  font-family:"KaiTi","STKaiti",serif;
+}
+.play-card .ico{font-size:44px;margin-bottom:14px}
+.play-card h3{color:var(--gold);font-size:20px;letter-spacing:3px;margin-bottom:12px}
+.play-card p{color:var(--text-dim);font-size:14px;line-height:2;letter-spacing:1px}
+.play-card p b{color:var(--gold-bright)}
+.play-tip{max-width:1100px;margin:30px auto 0;text-align:center;color:var(--text-dim);font-size:13.5px;letter-spacing:1px}
+
+/* ---------- 元宝获取 ---------- */
+#ingot{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.ingot-wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+.ingot-card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:34px 36px}
+.ingot-card h3{color:var(--gold);letter-spacing:4px;font-size:20px;margin-bottom:22px;text-align:center}
+.ingot-card table{width:100%;border-collapse:collapse}
+.ingot-card td{padding:12px 6px;font-size:14.5px;border-bottom:1px dashed rgba(232,196,118,.14)}
+.ingot-card td:first-child{color:var(--gold-dim);letter-spacing:2px;width:30%;white-space:nowrap}
+.ingot-card td:last-child{color:var(--text-dim)}
+.ingot-card td b{color:var(--gold-bright)}
+.ingot-card tr:last-child td{border-bottom:none}
+.ingot-note{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:34px 32px;text-align:center}
+.ingot-note h3{color:var(--gold);letter-spacing:4px;font-size:20px;margin-bottom:20px}
+.ingot-note ul{text-align:left}
+.ingot-note li{list-style:none;color:var(--text-dim);font-size:14px;line-height:2.2;letter-spacing:1px}
+.ingot-note li::before{content:"◆ ";color:var(--gold-dim);font-size:11px}
+.ingot-note li b{color:var(--gold-bright)}
+
+/* ---------- 加入我们 ---------- */
+#join{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.join-wrap{max-width:760px;margin:0 auto}
+.join-card{
+  border:1px solid var(--line);border-radius:14px;background:var(--panel);
+  padding:52px 40px;text-align:center;
+  box-shadow:0 14px 46px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.join-ico{font-size:52px;margin-bottom:18px}
+.join-num{font-size:clamp(20px,3vw,28px);color:var(--text);letter-spacing:2px;margin-bottom:20px}
+.join-num b{color:var(--gold-bright);font-family:Consolas,monospace;letter-spacing:3px}
+.join-tip{color:var(--text-dim);font-size:14.5px;line-height:2.2;letter-spacing:1px;margin-bottom:30px}
+.join-tip b{color:var(--gold)}
+
+/* ---------- 截图画廊 ---------- */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.shot{
+  aspect-ratio:16/9;border-radius:10px;border:1px solid var(--line);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;position:relative;transition:.3s;
+  color:var(--text-dim);font-size:14px;letter-spacing:3px;
+}
+.shot:hover{border-color:var(--gold);transform:scale(1.02)}
+.shot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.g1{background:linear-gradient(140deg,#1a2c50,#2c4a7e)}
+.g2{background:linear-gradient(140deg,#382512,#6e4a20)}
+.g3{background:linear-gradient(140deg,#122e28,#20584a)}
+.g4{background:linear-gradient(140deg,#301a3a,#5a3470)}
+.g5{background:linear-gradient(140deg,#333012,#645c22)}
+.g6{background:linear-gradient(140deg,#141b33,#33406e)}
+
+/* ---------- 底部 ---------- */
+footer{
+  padding:56px 6vw 40px;text-align:center;border-top:1px solid rgba(232,196,118,.12);
+  background:#070b14;
+}
+footer .qq{color:var(--gold-bright);font-size:20px;letter-spacing:3px;margin-bottom:14px}
+footer p{color:var(--text-dim);font-size:12.5px;line-height:2;letter-spacing:1px}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:860px){
+  nav ul{display:none}
+  .server-wrap,.ingot-wrap{grid-template-columns:1fr}
+  .countdown{gap:10px}
+  .cd-box{min-width:74px;padding:12px 6px}
+  .cd-box b{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">传奇完美<small>zhuangwm.online</small></div>
+  <ul>
+    <li><a href="#intro">游戏介绍</a></li>
+    <li><a href="#classes">职业</a></li>
+    <li><a href="#server">开服信息</a></li>
+    <li><a href="#play">游戏体验</a></li>
+    <li><a href="#ingot">元宝获取</a></li>
+    <li><a href="#gallery">游戏截图</a></li>
+    <li><a href="#join">加入我们</a></li>
+  </ul>
+</nav>
+
+<!-- ================= 首屏 ================= -->
+<header class="hero">
+  <span class="cloud" style="top:18%;animation-duration:55s">☁</span>
+  <span class="cloud" style="top:34%;animation-duration:75s;animation-delay:-30s;font-size:110px">☁</span>
+  <span class="cloud" style="top:12%;animation-duration:90s;animation-delay:-60s;font-size:200px">☁</span>
+
+  <div class="tagline">经 典 复 刻 · 万 人 同 服 · 长 久 稳 定</div>
+  <h1>传奇完美</h1>
+  <div class="sub">完美国际 <b>155级</b> 冰戎相见 · 怀旧巅峰版本</div>
+  <div class="divider"></div>
+
+  <!-- [改这里] 开服时间在页面底部 <script> 里的 OPEN_TIME -->
+  <div class="countdown" id="countdown">
+    <div class="cd-box"><b id="cd-d">--</b><span>天</span></div>
+    <div class="cd-box"><b id="cd-h">--</b><span>时</span></div>
+    <div class="cd-box"><b id="cd-m">--</b><span>分</span></div>
+    <div class="cd-box"><b id="cd-s">--</b><span>秒</span></div>
+  </div>
+  <div class="open-time">首区【祖龙城】 <b id="open-time-text">2026年9月30日 17:00</b> 火爆开启</div>
+
+  <div class="btns">
+    <a class="btn btn-gold" href="#play">游戏体验</a>
+    <a class="btn btn-ghost" href="#ingot">元宝获取</a>
+  </div>
+</header>
+
+<!-- ================= 游戏介绍 ================= -->
+<section id="intro">
+  <div class="sec-title"><h2>游戏介绍</h2></div>
+  <div class="sec-sub">原 汁 原 味 的 完 美 世 界 · 属 于 老 玩 家 的 青 春</div>
+  <div class="intro-grid">
+    <div class="feature">
+      <div class="ico">⚔️</div>
+      <h3>经典155版本</h3>
+      <p>冰戎相见版本完整复刻,飞升渡劫、151-155突破、战戎系统一个不少,拒绝魔改,还原当年味道。</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🐉</div>
+      <h3>三族争锋</h3>
+      <p>人、兽、羽三族十二职业全开放,祖龙城下万人攻城,重温激情澎湃的领土战。</p>
+    </div>
+    <div class="feature">
+      <div class="ico">💰</div>
+      <h3>适度倍率</h3>
+      <p>经验适中不肝不氪,装备全靠打,材料可交易,散人也能玩得风生水起。</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🛡️</div>
+      <h3>长久稳定</h3>
+      <p>高防服务器,专业技术维护,严打外挂脚本,GM在线巡查,给你一个干净公平的完美世界。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 职业 ================= -->
+<section id="classes">
+  <div class="sec-title"><h2>三族职业</h2></div>
+  <div class="sec-sub">十 二 职 业 · 谁 与 争 锋</div>
+  <div class="class-grid">
+    <div class="cls c1"><div class="big">🗡️</div><h3>武侠</h3><p>近战之王 · 拳剑刀棍</p></div>
+    <div class="cls c2"><div class="big">🔮</div><h3>法师</h3><p>元素轰炸 · 高爆输出</p></div>
+    <div class="cls c3"><div class="big">🐺</div><h3>妖兽</h3><p>钢铁堡垒 · 变身坦克</p></div>
+    <div class="cls c4"><div class="big">🧚</div><h3>妖精</h3><p>宠物大师 · 御兽千军</p></div>
+    <div class="cls c5"><div class="big">🏹</div><h3>羽芒</h3><p>百步穿杨 · 极致暴击</p></div>
+    <div class="cls c6"><div class="big">🕊️</div><h3>羽灵</h3><p>妙手回春 · 团队核心</p></div>
+  </div>
+</section>
+
+<!-- ================= 开服信息 ================= -->
+<section id="server">
+  <div class="sec-title"><h2>开服信息</h2></div>
+  <div class="sec-sub">开 区 详 情 · 一 目 了 然</div>
+  <div class="server-wrap">
+    <div class="info-card">
+      <h3>服务器设置</h3>
+      <table>
+        <tr><td>开服时间</td><td><b>2026年9月30日 17:00</b></td></tr>
+        <tr><td>游戏版本</td><td>完美国际 155级 冰戎相见</td></tr>
+        <tr><td>经验倍率</td><td><b>10倍</b>(可调心法)</td></tr>
+        <tr><td>掉落倍率</td><td><b>5倍</b></td></tr>
+        <tr><td>金钱倍率</td><td><b>5倍</b></td></tr>
+        <tr><td>最高等级</td><td>155级(开放渡劫飞升)</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h3>开区活动</h3>
+      <table>
+        <tr><td>新手礼包</td><td>上线即送时装 + 坐骑 + 7天双倍</td></tr>
+        <tr><td>冲级排行</td><td>前十名奖励稀有武器成品</td></tr>
+        <tr><td>帮派争霸</td><td>首次领土战冠军帮派奖励丰厚</td></tr>
+        <tr><td>在线好礼</td><td>每日在线时长兑换豪华奖励</td></tr>
+        <tr><td>老玩家回归</td><td>凭老区角色截图领回归大礼</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 游戏体验 ================= -->
+<section id="play">
+  <div class="sec-title"><h2>游戏体验</h2></div>
+  <div class="sec-sub">三 步 开 玩 · 轻 松 上 手</div>
+  <div class="play-grid">
+    <div class="play-card">
+      <div class="step">壹</div>
+      <div class="ico">📦</div>
+      <h3>获取客户端</h3>
+      <p>加入官方QQ群,在 <b>群公告 / 群文件</b> 获取完整客户端与最新补丁(约 4.2 GB)</p>
+    </div>
+    <div class="play-card">
+      <div class="step">贰</div>
+      <div class="ico">🗂️</div>
+      <h3>解压安装</h3>
+      <p>解压到<b>非中文路径</b>,运行登录器,如遇杀毒软件误报请添加信任</p>
+    </div>
+    <div class="play-card">
+      <div class="step">叁</div>
+      <div class="ico">⚔️</div>
+      <h3>创角开玩</h3>
+      <p>注册账号 → 创建角色 → 领取<b>新手礼包</b>,即刻踏入完美大陆</p>
+    </div>
+  </div>
+  <div class="play-tip">遇到任何安装、进游戏问题,群内管理在线解答 · 时间 10:00 - 24:00</div>
+</section>
+
+<!-- ================= 元宝获取 ================= -->
+<section id="ingot">
+  <div class="sec-title"><h2>元宝获取</h2></div>
+  <div class="sec-sub">多 种 途 径 · 公 开 透 明</div>
+  <div class="ingot-wrap">
+    <div class="ingot-card">
+      <h3>获取途径</h3>
+      <table>
+        <tr><td>每日在线</td><td>在线时长兑换元宝,挂机也有收益</td></tr>
+        <tr><td>活动奖励</td><td>攻城战、BOSS战、节日活动均产出元宝</td></tr>
+        <tr><td>冲级排行</td><td>开区冲级前列额外奖励大量元宝</td></tr>
+        <tr><td>自由交易</td><td>元宝可与其他玩家自由交易流通</td></tr>
+        <tr><td>赞助支持</td><td>详情见 <b>群公告</b>,联系群内管理咨询</td></tr>
+      </table>
+    </div>
+    <div class="ingot-note">
+      <h3>元宝说明</h3>
+      <ul>
+        <li>元宝可购买时装、坐骑、材料,<b>不出售成品装备</b></li>
+        <li>全服比例统一、公开透明,<b>拒绝暗箱操作</b></li>
+        <li>散人靠肝也能攒元宝,<b>打金自由</b></li>
+        <li>具体细则以 <b>群公告</b> 为准,入群即可查看</li>
+      </ul>
+      <a class="btn btn-gold" href="#join" style="margin-top:26px;display:inline-block">加群了解详情</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 加入我们 ================= -->
+<section id="join">
+  <div class="sec-title"><h2>加入我们</h2></div>
+  <div class="sec-sub">客 户 端 · 补 丁 · 开 服 公 告 · 尽 在 群 内</div>
+  <div class="join-wrap">
+    <div class="join-card">
+      <div class="join-ico">💬</div>
+      <!-- [改这里] 换成真实QQ群号, 加群链接可到"QQ群官网→群管理→加群组件"生成后替换 href -->
+      <div class="join-num">官方玩家QQ群:<b>69027143</b></div>
+      <div class="join-tip">
+        游戏客户端、最新补丁、开服公告、后续福利均在 <b>群公告 / 群文件</b> 发布<br>
+        入群暗号:<b>传奇完美</b> · 管理在线时间 10:00 - 24:00
+      </div>
+      <a class="btn btn-gold" href="https://shang.qq.com/wpa/qunwpa?id=69027143" target="_blank">一键加群</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 截图 ================= -->
+<section id="gallery">
+  <div class="sec-title"><h2>游戏截图</h2></div>
+  <div class="sec-sub">大 美 完 美 · 一 眼 万 年</div>
+  <div class="gallery">
+    <!-- [改这里] 把游戏截图放进 img/ 文件夹,然后取消注释 <img> 行即可 -->
+    <div class="shot g1"><!--<img src="img/1.jpg">-->祖龙城 · 全景</div>
+    <div class="shot g2"><!--<img src="img/2.jpg">-->万流城 · 夜色</div>
+    <div class="shot g3"><!--<img src="img/3.jpg">-->剑仙城 · 云海</div>
+    <div class="shot g4"><!--<img src="img/4.jpg">-->领土战 · 万人攻城</div>
+    <div class="shot g5"><!--<img src="img/5.jpg">-->飞升渡劫 · 天雷</div>
+    <div class="shot g6"><!--<img src="img/6.jpg">-->时装展示</div>
+  </div>
+</section>
+
+<footer>
+  <div class="qq">官方玩家QQ群:69027143</div>
+  <p>
+    传奇完美 · 完美国际155怀旧服<br>
+    本站仅供游戏爱好者交流学习使用 · 请勿用于商业用途<br>
+    抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活
+  </p>
+</footer>
+
+<script>
+/* ============ [改这里] 开服时间 ============ */
+const OPEN_TIME = new Date('2026-09-30T17:00:00+08:00');
+
+document.getElementById('open-time-text').textContent =
+  OPEN_TIME.getFullYear()+'年'+(OPEN_TIME.getMonth()+1)+'月'+OPEN_TIME.getDate()+'日 '
+  + String(OPEN_TIME.getHours()).padStart(2,'0')+':'+String(OPEN_TIME.getMinutes()).padStart(2,'0');
+
+function tick(){
+  let diff = OPEN_TIME - new Date();
+  if(diff <= 0){
+    document.getElementById('countdown').innerHTML =
+      '<div class="cd-box" style="min-width:auto;padding:16px 40px"><b style="font-size:30px">🔥 已经开服,立即进入!</b></div>';
+    return;
+  }
+  const d = Math.floor(diff/864e5);
+  const h = Math.floor(diff%864e5/36e5);
+  const m = Math.floor(diff%36e5/6e4);
+  const s = Math.floor(diff%6e4/1e3);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  setTimeout(tick, 1000);
+}
+tick();
+</script>
+</body>
+</html>
