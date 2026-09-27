@@ -659,8 +659,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   <div class="ticker-tag"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#1a1205" stroke-width="2" stroke-linecap="round"><path d="M6 10 L12 4 L18 10 M12 4 L12 20"/></svg>公告</div>
   <div class="ticker-track">
     <div class="ticker-marquee" id="ticker">
-      <span>游戏开启前<b class="t-red">预充值返50%</b>充值</span>
-      <span>游戏开启前<b class="t-red">预充值返50%</b>充值</span>
+      <span><b class="t-red">传奇完美 9月30日 18:00 正式开启</b></span>
+      <span><b class="t-red">传奇完美 9月30日 18:00 正式开启</b></span>
     </div>
   </div>
 </div>
@@ -1006,12 +1006,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   });
 
   /* 7.1 公告到点自动替换 */
-  var openTime = new Date(2026, 8, 25, 18, 0, 0);
+  var openTime = new Date(2026, 8, 30, 18, 0, 0);
   var tickerEl = document.getElementById("ticker");
   function swapTicker(){
     if (!tickerEl) return;
     tickerEl.innerHTML =
-      '<span>传奇完美 9月25日 18:00 正式开启</span>'.repeat(2);
+      '<span><b class="t-red">传奇完美 9月30日 18:00 正式开启</b></span>'.repeat(2);
   }
   function armTicker(){
     var wait = openTime.getTime() - Date.now();
